@@ -2,13 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// const corsOption = {
-//   origin: 'http://localhost:3001',
-// };
+// send data in spesific URL
+const corsOption = {
+  origin: 'http://localhost:5173',
+};
 
-app.use(cors());
-
-app.get('/events', (req, res) => {
+app.get('/events', cors(corsOption), (req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache',
